@@ -1,0 +1,10 @@
+#!/bin/sh
+# Valida mensagem de commit
+commit_regex='^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,72}$'
+if ! grep -qE "$commit_regex" "$1"; then
+  echo "❌ Mensagem de commit inválida!"
+  echo "📋 Use o padrão: type(escopo): mensagem"
+  echo "   Tipos válidos: feat, fix, docs, style, refactor, test, chore"
+  echo "   Exemplo: feat(produtos): adiciona filtro por categoria"
+  exit 1
+fi
