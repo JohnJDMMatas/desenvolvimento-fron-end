@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Produtos</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-dark fw-normal" href="#">MeuProjeto</a>
+
+            <button class="navbar-toggler border-dark" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-normal" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-normal active" href="produtos.html">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-normal" href="contatos.html">Contatos</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navbar-actions">
+                <div class="theme-switcher">
+                    <label class="theme-switcher__label" for="theme-select-produtos">Tema</label>
+                    <select id="theme-select-produtos" class="form-select form-select-sm" data-theme-select>
+                        <option value="default">Padrao</option>
+                        <option value="sunset">Sunset</option>
+                        <option value="forest">Forest</option>
+                    </select>
+                </div>
+                <button id="botao-carrinho" class="btn btn-outline-dark position-relative" onclick="toggleCarrinho()" style="font-size: 1rem;">Carrinho</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="popup-carrinho" class="popup-carrinho">
+        <div class="popup-carrinho-conteudo">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">Carrinho de Compras</h4>
+                <button class="btn btn-close" onclick="toggleCarrinho()" aria-label="Fechar"></button>
+            </div>
+            <div id="lista-carrinho" class="lista-carrinho">
+                <p class="text-center text-muted">Carrinho vazio</p>
+            </div>
+            <div class="carrinho-total">
+                <h5>Total: <span id="total-carrinho">R$ 0,00</span></h5>
+            </div>
+            <div class="carrinho-botoes">
+                <button class="btn btn-danger" onclick="limparCarrinho()">Limpar Carrinho</button>
+                <button class="btn btn-success" onclick="finalizarCompra()">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container page-section">
+        <section class="hero-panel mb-4">
+            <h1 class="mb-3">Produtos</h1>
+            <p class="page-lead mb-0">Escolha quantos itens deseja visualizar, abra o modal para ver detalhes e acompanhe o total do produto antes de enviar para o carrinho.</p>
+        </section>
+
+        <div class="mb-4">
+            <label for="num-produtos" class="form-label fw-bold">Numero de produtos a exibir:</label>
+            <select id="num-produtos" class="form-select w-auto">
+                <option value="3" selected>3</option>
+                <option value="6">6</option>
+                <option value="9">9</option>
+                <option value="all">Todos</option>
+            </select>
+        </div>
+
+        <div class="row" id="produtos-container"></div>
+    </div>
+
+    <div class="modal fade" id="modalDetalhesProduto" tabindex="-1" aria-labelledby="modalDetalhesProdutoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDetalhesProdutoLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modal-produto-imagem" src="" class="img-fluid rounded" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <p id="modal-produto-descricao" class="mb-3"></p>
+                            <h4 id="modal-produto-preco" class="mb-3"></h4>
+                            <div class="mb-3">
+                                <label class="form-label">Quantidade:</label>
+                                <input type="number" id="modal-produto-quantidade" class="form-control" value="1" min="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="modal-adicionar-carrinho">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
